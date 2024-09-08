@@ -1,0 +1,63 @@
+/*The provided Java code is a program called "GradeTracker" that allows users to input five
+grades, calculates the average, and determines the corresponding letter grade and GPA. 
+It uses an array to store the grades, calculates the total, and then divides it by the number
+of grades to get the average. The program also includes two methods, "getLetterGrade" and "getGPA" ,
+to determine the letter grade and GPA based on the average grade. */
+
+package codetech.java;
+
+import java.util.Scanner;
+
+public class GradeTracker {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        double[] grades = new double[5];
+        double total = 0;
+        
+        System.out.println("Welcome to the Grade Tracker!");
+        System.out.println("Please enter 5 grades:");
+        
+        for (int i = 0; i < grades.length; i++) {
+            System.out.print("Grade " + (i+1) + ": ");
+            grades[i] = scanner.nextDouble();
+            total += grades[i];
+        }
+        
+        double average = total / grades.length;
+        System.out.println("\nAverage grade: " + average);
+        
+        String letterGrade = getLetterGrade(average);
+        double gpa = getGPA(average);
+        
+        System.out.println("Letter grade: " + letterGrade);
+        System.out.println("GPA: " + gpa);
+    }
+    
+    public static String getLetterGrade(double average) {
+        if (average >= 90) {
+            return "A";
+        } else if (average >= 80) {
+            return "B";
+        } else if (average >= 70) {
+            return "C";
+        } else if (average >= 60) {
+            return "D";
+        } else {
+            return "F";
+        }
+    }
+    
+    public static double getGPA(double average) {
+        if (average >= 90) {
+            return 4.0;
+        } else if (average >= 80) {
+            return 3.0;
+        } else if (average >= 70) {
+            return 2.0;
+        } else if (average >= 60) {
+            return 1.0;
+        } else {
+            return 0.0;
+        }
+    }
+}
